@@ -1,9 +1,6 @@
 # Sistema Integral de Recepción y Administración — Carnes Ideal
 
-**Estudiantes:** 
-Alejandro Aguilera Ceballos  
-José Ángel Malvaez Flores 
-Gomez Belmont Wendy Nathaly 
+**Estudiantes:** Alejandro Aguilera Ceballos, José Ángel Malvaez Flores, Gomez Belmont Wendy Nathaly 
 
 **Asignatura:** Bases de Datos 2026-2  
 **URL del sistema:** https://carnicerialaidealescom1.page.gd/CARNES/Login.html
