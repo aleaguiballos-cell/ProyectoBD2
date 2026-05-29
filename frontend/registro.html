@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Carnes Ideal</title>
+  <link rel="icon" type="image/png" href="images/circlecarnesideal.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" />
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #e74c3c;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 16px;
+    }
+
+    .register-form {
+      background: #fff;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 10px 30px rgba(255,45,45,0.25);
+      border: 3px solid #ff2d2d;
+      padding: 26px 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .circle-btn {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: none;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.15);
+      cursor: pointer;
+      padding: 0;
+      margin-bottom: 14px;
+      transition: transform 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    .circle-btn.animated { animation: pulse 0.7s; }
+    @keyframes pulse {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.12); }
+      100% { transform: scale(1); }
+    }
+    .circle-img {
+      width: 94px;
+      height: 94px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    h2 {
+      text-align: center;
+      color: #fff;
+      font-size: 1.2rem;
+      background: #e74c3c;
+      border-radius: 8px;
+      padding: 10px 14px;
+      width: 100%;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .input-group {
+      position: relative;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .input-group input,
+    .input-group select {
+      width: 100%;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      font-size: 15px;
+      padding: 9px 32px 5px 0;
+      background: transparent;
+      color: #333;
+      outline: none;
+      font-family: 'Roboto', sans-serif;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .input-group input:focus,
+    .input-group select:focus,
+    .input-group input:valid,
+    .input-group select:valid {
+      border-bottom: 2px solid #e74c3c;
+    }
+    .input-group label {
+      position: absolute;
+      top: 9px;
+      left: 0;
+      color: #e74c3c;
+      font-size: 15px;
+      pointer-events: none;
+      transition: 0.2s ease all;
+    }
+    .input-group input:focus ~ label,
+    .input-group input:valid ~ label,
+    .input-group select:focus ~ label,
+    .input-group select:valid ~ label {
+      top: -15px;
+      font-size: 12px;
+    }
+
+    /* Botón ojo */
+    .toggle-pass {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-60%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #e74c3c;
+      font-size: 16px;
+      padding: 0;
+      width: auto;
+      margin: 0;
+      box-shadow: none;
+    }
+    .toggle-pass:hover {
+      background: none;
+      border: none;
+      color: #c0392b;
+      transform: translateY(-60%) scale(1.1);
+      box-shadow: none;
+    }
+
+    .msg { font-size: 13px; margin-bottom: 8px; width: 100%; display: none; }
+    .msg-error { color: #e74c3c; }
+    .msg-ok    { color: green; }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background: #e74c3c;
+      border: 2px solid #e74c3c;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+      margin-top: 6px;
+      margin-bottom: 12px;
+    }
+    button[type="submit"]:hover {
+      background: #fff;
+      color: #e74c3c;
+    }
+
+    .btn-login {
+      display: block;
+      width: 100%;
+      padding: 11px 0;
+      background: #fff;
+      color: #e74c3c;
+      border: 2px solid #e74c3c;
+      border-radius: 6px;
+      font-size: 15px;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+    .btn-login:hover { background: #e74c3c; color: #fff; }
+  </style>
+</head>
+<body>
+  <div class="register-form">
+
+    <button class="circle-btn" type="button">
+      <img src="images/circlecarnesideal.png" alt="Carnes Ideal" class="circle-img" />
+    </button>
+
+    <h2>Crear Nueva Cuenta</h2>
+
+    <form id="register-form" method="POST" action="registro.php" style="width:100%;">
+
+      <div class="input-group">
+        <input type="text" name="nombre_completo" required />
+        <label>Nombre Completo</label>
+      </div>
+
+      <div class="input-group">
+        <input type="text" name="username" required />
+        <label>Nombre de Usuario</label>
+      </div>
+
+      <div class="input-group">
+        <select name="permisos" required>
+          <option value="" disabled selected hidden></option>
+          <option value="admin">Administrador</option>
+          <option value="operativo">Operativo</option>
+        </select>
+        <label>Permisos</label>
+      </div>
+
+      <div class="input-group">
+        <input type="email" name="correo" required />
+        <label>Correo electrónico</label>
+      </div>
+
+      <!-- Contraseña con ojo -->
+      <div class="input-group">
+        <input type="password" name="password" id="password" required />
+        <button type="button" class="toggle-pass" onclick="togglePass('password', this)">
+          <i class="fa-solid fa-eye"></i>
+        </button>
+        <label>Contraseña</label>
+      </div>
+
+      <!-- Confirmar contraseña con ojo -->
+      <div class="input-group">
+        <input type="password" name="confirm_password" id="confirm_password" required />
+        <button type="button" class="toggle-pass" onclick="togglePass('confirm_password', this)">
+          <i class="fa-solid fa-eye"></i>
+        </button>
+        <label>Confirmar Contraseña</label>
+      </div>
+
+      <p id="user-exists-error" class="msg msg-error">⚠️ Ese nombre de usuario ya existe.</p>
+      <p id="password-error"    class="msg msg-error">⚠️ Las contraseñas no coinciden.</p>
+      <p id="strength-error"    class="msg msg-error">⚠️ Mínimo 8 caracteres, una mayúscula, un número y un signo.</p>
+      <p id="success-message"   class="msg msg-ok">✅ Usuario registrado exitosamente.</p>
+
+      <button type="submit">Registrar</button>
+    </form>
+
+    <a href="Login.html" class="btn-login">¿Ya tienes cuenta? Inicia Sesión</a>
+
+  </div>
+
+  <script>
+    // Animación logo
+    document.querySelector('.circle-btn').addEventListener('click', function() {
+      this.classList.remove('animated');
+      void this.offsetWidth;
+      this.classList.add('animated');
+    });
+
+    // Mostrar/ocultar contraseña
+    function togglePass(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const icon  = btn.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.replace('fa-eye', 'fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.replace('fa-eye-slash', 'fa-eye');
+      }
+    }
+
+    document.getElementById('register-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const nombre_completo = form.nombre_completo.value.trim();
+      const username        = form.username.value.trim();
+      const permisos        = form.permisos.value.trim();
+      const correo          = form.correo.value.trim();
+      const password        = form.password.value.trim();
+      const confirm         = form.confirm_password.value.trim();
+
+      ['user-exists-error','password-error','strength-error','success-message']
+        .forEach(id => document.getElementById(id).style.display = 'none');
+
+      if (password !== confirm) {
+        document.getElementById('password-error').style.display = 'block'; return;
+      }
+      if (!/^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(password)) {
+        document.getElementById('strength-error').style.display = 'block'; return;
+      }
+
+      const res = await fetch('registro.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ nombre_completo, username, permisos, correo, password, confirm_password: confirm })
+      });
+      const result = await res.text();
+
+      if (result.includes('EXISTS')) {
+        document.getElementById('user-exists-error').style.display = 'block';
+      } else if (result.includes('OK')) {
+        document.getElementById('success-message').style.display = 'block';
+        setTimeout(() => window.location.href = 'Login.html', 1500);
+      } else {
+        alert('Error: ' + result);
+      }
+    });
+  </script>
+</body>
+</html>

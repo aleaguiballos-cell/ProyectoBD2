@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carnes Ideal</title>
+  <link rel="icon" type="image/png" href="images/circlecarnesideal.png">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="Login.css">
+  <style>
+    .circle-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    /* Llave y ojo comparten exactamente la misma posición */
+    #KeyIcon, #eyeBtn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #e74c3c;
+    }
+    #eyeBtn {
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      cursor: pointer;
+      padding: 0;
+      width: auto !important;
+      margin: 0;
+      display: none; /* oculto hasta que se escriba */
+    }
+    #eyeBtn:hover {
+      background: none !important;
+      border: none !important;
+      color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <div id="bienvenida-msg"></div>
+  <div class="login-form">
+    <button class="circle-btn" type="button">
+      <img src="images/circlecarnesideal.png" class="circle-img" alt="Carnes Ideal">
+    </button>
+    <h2>Sistema Integral de Recepción y Administración</h2>
+    <form action="login.php" method="POST" id="login-form">
+      
+      <div class="input-group">
+        <input type="text" name="username" required>
+        <i class="fa-solid fa-lock"></i>
+        <label>Usuario</label>
+      </div>
+      
+      <div class="input-group" style="position:relative;">
+        <input type="password" id="passwordInput" name="password" required>
+        <!-- Llave: visible por defecto -->
+        <i id="KeyIcon" class="fa-solid fa-key"></i>
+        <!-- Ojo: aparece al escribir, misma posición que la llave -->
+        <button type="button" id="eyeBtn">
+          <i class="fa-solid fa-eye" id="eyeIcon"></i>
+        </button>
+        <label>Contraseña</label>
+      </div>
+
+      <button type="submit">Iniciar sesión</button>
+    </form>
+    <a href="registro.html" class="btn-register">Registrarse</a>
+  </div>
+
+  <div id="loadingOverlay" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(255,255,255,0.95);z-index:9999;align-items:center;justify-content:center;flex-direction:column;">
+    <div style="font-size:2rem;color:#e74c3c;font-weight:700;margin-bottom:18px;">Cargando...</div>
+    <div class="loader" style="border:6px solid #ffd6d6;border-top:6px solid #e74c3c;border-radius:50%;width:48px;height:48px;animation:spin 1s linear infinite;"></div>
+  </div>
+  <style>
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+  </style>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="Login.js"></script>
+  <script>
+    (function() {
+      var pass = document.getElementById('passwordInput');
+      var key  = document.getElementById('KeyIcon');
+      var eye  = document.getElementById('eyeBtn');
+      var icon = document.getElementById('eyeIcon');
+
+      key.style.display = 'inline';
+      eye.style.display = 'none';
+
+      pass.addEventListener('keyup', function() {
+        if (pass.value.length > 0) {
+          key.style.display = 'none';
+          eye.style.display = 'inline-block';
+        } else {
+          key.style.display = 'inline';
+          eye.style.display = 'none';
+          pass.type = 'password';
+          icon.className = 'fa-solid fa-eye';
+        }
+      });
+
+      eye.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (pass.type === 'password') {
+          pass.type = 'text';
+          icon.className = 'fa-solid fa-eye-slash';
+        } else {
+          pass.type = 'password';
+          icon.className = 'fa-solid fa-eye';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
