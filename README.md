@@ -182,4 +182,4 @@ http://localhost/CARNES/Login.html
 |---|---|
 | 🌐 Sistema en línea | [Abrir sistema](https://carnicerialaidealescom1.page.gd/CARNES/Login.html) |
 | 💻 Código fuente | [Ver en GitHub](https://github.com/aleaguiballos-cell/ProyectoBD2) |
-| 🗄️ Base de datos | sql311.infinityfree.com |
+| 🗄️ Base de datos | [infinityfree] (https://php-myadmin.net/db_structure.php?db=if0_41904449_carniceria)  |
