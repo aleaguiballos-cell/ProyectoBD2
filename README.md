@@ -121,7 +121,6 @@ Sistema web de registro y control de recepción de productos para la empresa **C
 
 ## Notas especiales
 
-- La base de datos está en **InfinityFree** (`sql311.infinityfree.com`) — para ejecución local cambiar los datos de conexión como se indica arriba.
 - Las contraseñas se almacenan con `password_hash()` algoritmo **bcrypt**.
 - Todas las consultas usan **Prepared Statements** para prevenir SQL Injection.
 - Solo usuarios con rol `admin` pueden acceder al panel de administración.
