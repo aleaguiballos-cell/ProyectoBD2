@@ -111,35 +111,13 @@ Sistema web de registro y control de recepción de productos para la empresa **C
 
 | Usuario | Contraseña | Rol |
 |---|---|---|
-| `Ricardo` | `Ricardo123!` | Operativo |
+| `2` | `Aguilucho5000$` | Administrador |
+| `1` | `Aguilucho5000$` | Operativo |
 
 3. Llenar el formulario de recepción y dar clic en **Guardar**
 4. Para acceder al panel admin, iniciar sesión con una cuenta de rol `admin`
 
-### Opción 2 — Ejecución local
 
-**Requisitos:** XAMPP (Apache + MySQL), PHP 8.0+
-
-```bash
-# 1. Copiar todos los archivos en:
-C:/xampp/htdocs/CARNES/
-
-# 2. Crear la base de datos en phpMyAdmin ejecutando:
-CREATE DATABASE carniceria_db;
-
-# 3. Crear las tablas (ver sección "Estructura de la base de datos")
-
-# 4. Cambiar datos de conexión en login.php, registro.php y guardar_excel.php:
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$db   = 'carniceria_db';
-
-# 5. Abrir en navegador:
-http://localhost/CARNES/Login.html
-```
-
----
 
 ## Notas especiales
 
